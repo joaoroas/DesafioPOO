@@ -3,12 +3,12 @@ namespace Desafio21DiasPOO
     public class Fisica : Pessoa
     {
 
-        public string CPF { get; set; }
-        public string RG { get; set; }
+        public string? CPF { get; set; }
+        public string? RG { get; set; }
 
         public static List<Fisica> bancoDados = new List<Fisica>();
 
-        public void Salvar()
+        public override void Salvar()
         {
             Fisica.bancoDados.Add(this);
         }
@@ -35,6 +35,16 @@ namespace Desafio21DiasPOO
             }
             return lista;
 
+        }
+
+        public override void Busca()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Excluir()
+        {
+            throw new NotImplementedException();
         }
     }
 }
