@@ -1,20 +1,13 @@
 ﻿using Desafio21DiasPOO;
-using DesafioPOO.Models;
-using DesafioPOO.Interfaces;
-using DesafioPOO.Helper;
 
 
 
-Gato animal = new Gato(){Nome= "Gato"};
-try
-{
-    animal.Andar();
-}
-catch (AnimalException e)
-{
-    Console.WriteLine(e.Message);
-}
 
+
+
+//Utilizando o método salvar que está em servicos.!
+new Fisica() {Nome="Joao Ricardo", Endereco="Rua São paulo", Id=1}.Salvar();
+new Juridica() {Nome="Distribuidora Vitoria", Endereco="Rua São paulo", Id=2}.Salvar();
 
 
 
@@ -27,11 +20,6 @@ Servicos.Salvar(empresa1);
 //Servicos.Excluir(empresa1);
 
 Servicos.Busca(empresa); */
-
-
-
-
-
 
 
 
