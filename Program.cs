@@ -6,10 +6,27 @@
 
 
 //Utilizando o método salvar que está em servicos.!
-new Fisica() {Nome="Joao Ricardo", Endereco="Rua São paulo", Id=1}.Salvar();
-new Juridica() {Nome="Distribuidora Vitoria", Endereco="Rua São paulo", Id=2}.Salvar();
+new Fisica() { Nome = "Joao Ricardo", Endereco = "Rua São paulo", Id = 1, CPF="154.698.567-64" }.Salvar();
+new Juridica() { Nome = "Distribuidora Vitoria", Endereco = "Rua São paulo", Id = 2, CNPJ="12354698722255" }.Salvar();
+
+var fisicas = Servicos.Procurar<List<Fisica>>().ToList();
+
+var juridicas = Servicos.Procurar<List<Juridica>>();
 
 
+
+var listaFisica = Servicos.Buscar(new Fisica());
+
+var listaJuridica = Servicos.Buscar(new Juridica());
+
+foreach (IPessoa iPessoa in listaFisica)
+{
+    System.Console.WriteLine(((Fisica)iPessoa).CPF);
+}
+foreach (Juridica juridica in listaJuridica)
+{
+    System.Console.WriteLine(juridica.CNPJ);
+}
 
 
 /* Juridica empresa = new Juridica() { Nome = "Distribuidora vitória", CNPJ = "1235541221" };
