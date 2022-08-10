@@ -5,7 +5,7 @@ namespace Desafio21DiasPOO
     {
         public static List<IPessoa> TabelaFisica = new List<IPessoa>();
         public static List<IPessoa> TabelaJuridica = new List<IPessoa>();
-        private IPessoa pessoa;
+        private  IPessoa pessoa;
 
         public Servicos(IPessoa iPessoa)
         {
@@ -22,7 +22,7 @@ namespace Desafio21DiasPOO
                 TabelaJuridica.Add((Juridica)iPessoa);
             }
         }
-        public List<IPessoa> Todos()
+        public  List<IPessoa> Buscar()
         {
             var lista = new List<IPessoa>();
             if (pessoa.GetType() == typeof(Fisica))

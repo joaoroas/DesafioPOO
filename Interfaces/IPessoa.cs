@@ -7,7 +7,7 @@ namespace Desafio21DiasPOO
         public string? Nome { get; set; }
         public string? Endereco { get; set; }
         void Salvar();
-        List<IPessoa> Busca();
+        List<IPessoa> Buscar();
         void Excluir();
 
     }

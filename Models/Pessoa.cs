@@ -3,16 +3,26 @@ namespace Desafio21DiasPOO
 {
     public abstract class Pessoa : IPessoa
     {
+        private string endereco;
         public int Id { get; set; }
         public string? Nome { get; set; }
-        public string? Endereco { get; set; }
+        public string? Endereco { 
+            get
+            {
+                return endereco.ToUpper();
+            }
+            set
+            {
+                endereco = value.ToLower();
+            }
+        }
 
         public abstract void Excluir();
 
 
-        public List<IPessoa> Busca()
+        public List<IPessoa> Buscar()
         {
-            throw new NotImplementedException();
+            return new Servicos(this).Buscar();
         }
 
         
