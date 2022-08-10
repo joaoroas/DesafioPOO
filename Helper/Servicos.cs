@@ -5,44 +5,81 @@ namespace Desafio21DiasPOO
     {
         public static List<IPessoa> TabelaFisica = new List<IPessoa>();
         public static List<IPessoa> TabelaJuridica = new List<IPessoa>();
+        private IPessoa pessoa;
 
-        public static void Salvar(IPessoa instancia)
+        public Servicos(IPessoa iPessoa)
         {
-            if (instancia.GetType().Name == "Fisica")
+            this.pessoa = iPessoa;
+        }
+        public static void Salvar(IPessoa iPessoa)
+        {
+            if (iPessoa.GetType().Name == "Fisica")
             {
-                TabelaFisica.Add((Fisica)instancia);
+                TabelaFisica.Add((Fisica)iPessoa);
             }
-            else if (instancia.GetType().Name == "Juridica")
+            else if (iPessoa.GetType().Name == "Juridica")
             {
-                TabelaJuridica.Add((Juridica)instancia);
+                TabelaJuridica.Add((Juridica)iPessoa);
             }
         }
-        public static List<IPessoa> Buscar(IPessoa iPessoa)
+        public List<IPessoa> Todos()
         {
-            if(iPessoa.GetType() == typeof(Fisica))
+            var lista = new List<IPessoa>();
+            if (pessoa.GetType() == typeof(Fisica))
             {
-                return Servicos.TabelaFisica;
+                lista.Add(new Fisica() { Nome = "Fisica" });
             }
-            else if(iPessoa.GetType() == typeof(Juridica))
+            else if (pessoa.GetType() == typeof(Juridica))
             {
-                return Servicos.TabelaJuridica;
+                lista.Add(new Juridica() { Nome = "Juridica" });
             }
-            return null;
+            return lista;
         }
-         public static T Procurar<T>()
+
+        public static void Excluir(IPessoa iPessoa)
         {
-            var lista = Servicos.TabelaFisica;
-            //List<IPessoa> lista = new List<IPessoa>();
-            return (T)Convert.ChangeType(lista, typeof(T));
-          /*   if(T.GetType() == typeof(Fisica))
+            if (iPessoa.GetType().Name == "Fisica")
             {
-                return Servicos.TabelaFisica;
+                Servicos.ExcluirPessoaFisica((Fisica)iPessoa);
             }
-            else if(iPessoa.GetType() == typeof(Juridica))
+            else if (iPessoa.GetType().Name == "Juridica")
             {
-                return Servicos.TabelaJuridica;
+                Servicos.ExcluirPessoaJuridica((Juridica)iPessoa);
             }
-            return null; */
+        }
+
+        public static T Procurar<T>()
+        {
+            if (typeof(T) == typeof(List<Juridica>))
+            {
+                return (T)Convert.ChangeType(Servicos.TabelaJuridica, typeof(T));
+            }
+            else
+            {
+                return (T)Convert.ChangeType(Servicos.TabelaFisica, typeof(T));
+            }
+        }
+
+        public static T BuscaPorId<T>(int id)
+        {
+            if (typeof(T) == typeof(List<Juridica>))
+            {
+                return (T)Convert.ChangeType(Servicos.TabelaJuridica, typeof(T));
+            }
+            else
+            {
+                return (T)Convert.ChangeType(Servicos.TabelaFisica, typeof(T));
+            }
+        }
+
+        private static void ExcluirPessoaFisica(Fisica iPessoa)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ExcluirPessoaJuridica(Juridica iPessoa)
+        {
+            throw new NotImplementedException();
         }
     }
 }
